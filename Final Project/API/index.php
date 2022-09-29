@@ -1,0 +1,134 @@
+<html ng-app="PlayerApp">
+	<head>
+		<title>VIBEZZ</title>
+		<link rel="stylesheet" href="style.css" />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet' type='text/css'>
+		<script src="bower_components\angular\angular.js"></script>
+		<script src="bower_components\angular-route\angular-route.js"></script>
+		<script src="app.js"></script>
+		<script src="services\auth.js"></script>
+		<script src="services\api.js"></script>
+		<script src="services\playback.js"></script>
+		<script src="services\playqueue.js"></script>
+		<script src="directives\playlistcover.js"></script>
+		<script src="directives\responsivecover.js"></script>
+		<script src="directives\contextmenu.js"></script>
+		<script src="directives\focusme.js"></script>
+		<script src="filters\displaytime.js"></script>
+		<script src="filters\timeago.js"></script>
+		<script src="controllers\player.js"></script>
+		<script src="controllers\login.js"></script>
+		<script src="controllers\playlist.js"></script>
+		<script src="controllers\home.js"></script>
+		<script src="controllers\artist.js"></script>
+		<script src="controllers\album.js"></script>
+		<script src="controllers\user.js"></script>
+		<script src="controllers\usertracks.js"></script>
+		<script src="controllers\playqueue.js"></script>
+		<script src="controllers\searchresults.js"></script>
+		<script src="controllers\browse.js"></script>
+		<script src="controllers\browsecategory.js"></script>
+	</head>
+	<body ng-controller="AppController">
+		<div class="fullview playerview" ng-show="showplayer">
+			<div ng-controller="PlayerController">
+				<div class="topgroup">
+					<div class="searchbox">
+						<input type="text" ng-model="query" ng-change="loadsearch()" ng-keyup="loadsearch()" placeholder="Search..." />
+					</div>
+					<div class="titlebox">
+						<a href="#/home">Vibezz</a>
+					</div>
+					<div class="userbox">
+						Signed in as <b><a href="#/users/{{profileUsername}}">{{profileUsername}}</a></b>
+						<a ng-click="logout()">Log out</a>
+					</div>
+				</div>
+				<div class="midgroup">
+					<div class="menuview">
+						<div class="list scrollable">
+							<b><a href="#/">MAIN</a></b>
+							<ul class="menuitems">
+								<li><a href="#/" ng-class="getClass('/')">Browse</a></li>
+							</ul>
+							<b><a href="#/me">YOUR MUSIC</a></b>
+							<ul class="menuitems">
+								<li><a href="#/users/{{username}}/tracks" ng-class="getClass('/users/{{username}}/tracks')">Songs</a></li>
+							</ul>
+							<b><a href="#/me">PLAYLISTS</a></b>
+							<ul class="menuitems">
+								<li ng-repeat="pl in playlists track by pl.id" ng-context-menu="menuOptions(pl)" ng-class="getClass('/users/{{pl.username}}/playlists/{{pl.id}}')">
+									<a href="#/users/{{pl.username}}/playlists/{{pl.id}}" ng-if="!pl.editing">
+										{{pl.name}}
+									</a>
+									<input focus-me="focusInput" ng-blur="playlistNameBlur(pl)" ng-if="pl.editing" class="edit" type="text" value="{{pl.name}}" name="title" ng-keyup="playlistNameKeyUp($event, pl)">
+								</li>
+							</ul>
+						</div>
+						<div class="preview">
+							<a href="#/albums/{{trackdata.album.id}}">
+								<responsive-cover ng-model="trackdata.album.images"></responsive-cover>
+							</a>
+							<p>
+								<b>{{trackdata.name}}</b>
+								<a href="#/artists/{{trackdata.artists[0].id}}">
+									{{trackdata.artists[0].name}}
+								</a>
+							</p>
+						</div>
+					</div>
+					<div class="mainview">
+						<div ng-view></div>
+					</div>
+				</div>
+				<div class="bottomgroup">
+					<div class="leftcontrols">
+						<div class="prevbutton">
+							<a ng-click="prev()"><img src="images/btn-prev.png" /></a>
+						</div>
+
+						<div class="playbutton">
+							<a ng-click="resume()" ng-hide="playing"><img src="images/btn-play.png" /></a>
+							<a ng-click="pause()" ng-show="playing"><img src="images/btn-pause.png" /></a>
+						</div>
+
+						<div class="nextbutton">
+							<a ng-click="next()"><img src="images/btn-next.png" /></a>
+						</div>
+
+						<div class="volume">
+							<input type="range" ng-change="changevolume()" min="0" max="100" ng-model="volume" />
+						</div>
+					</div>
+					<div class="seekcontrols">
+						<div class="progress">{{ progress | displaytime }}</div>
+						<div class="duration">{{ duration | displaytime }}</div>
+						<div class="slider">
+							<input type="range" ng-model="progress" ng-change="changeprogress()" min="0" max="{{duration}}" />
+						</div>
+					</div>
+					<div class="rightcontrols">
+						<!--
+						a ng-click="shuffle()">SHUF</a>
+						a ng-click="repeat()">REP.</a>
+						-->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="fullview loginview" ng-show="showlogin">
+			<div ng-controller="LoginController">
+				<div class="centered">
+					<div class="inner">
+						<h1>VIBEZZ</h1>
+						<p>
+							This demo explores the possibilities with the Web API. To view this demo you need to sign in with your spotify account.
+						</p>
+						<a ng-click="login()" class="button big green">login</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
