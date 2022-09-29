@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Passions+Conflict&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+.ironman {
+  width: 100%;
+  height: 100vh;
+  background-image: url(landingbg.webp);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.logo {
+  background: url("/path") no-repeat;
+  width: 70px;
+  height: 70px;
+  display: block;
+  text-indent: -9999px;
+  border-radius: 50%;
+}
+.spiderman {
+  width: 88%;
+  margin: auto;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.spiderman ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 15px;
+  position: relative;
+}
+.spiderman ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.joker {
+  width: 100%;
+  position: absolute;
+  top: 30%;
+}
+.batman {
+  margin-left: 6%;
+}
+.batman h1 {
+  font-weight: 100;
+  font-size: 54px;
+  color: #fff;
+  line-height: 110px;
+  float: left;
+  font-family: cursive;
+}
+.superman {
+  float: right;
+  margin-right: 6%;
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+}
+.superman p {
+  font-size: 30px;
+  color: #fff;
+  font-family: sans-serif;
+  margin-right: 15px;
+}
+#icon {
+  width: 80px;
+  cursor: pointer;
+}
+footer {
+  position: relative;
+  background: #000;
+  min-height: 65px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+footer .deadpool {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+footer .deadpool li {
+  list-style: none;
+}
+footer .deadpool li a {
+  font-size: 2em;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+footer .deadpool li a:hover {
+  transform: translate(-10px);
+}
+
+/* button */
+
+.butn {
+  border: 1px solid white;
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  overflow: hidden;
+  transition: 0.2s;
+}
+.butn:hover {
+  color: #255784;
+  background: #2196f3;
+  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+  transition-delay: 1s;
+}
+.butn span {
+  position: absolute;
+  display: block;
+}
+.butn span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #2196f3);
+}
+.butn:hover span:nth-child(1) {
+  left: 100%;
+  transition: 1s;
+}
+.butn span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #2196f3);
+}
+.butn:hover span:nth-child(3) {
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+}
+
+.butn span:nth-child(2) {
+  top: -100%;
+  right: 0%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #2196f3);
+}
+.butn:hover span:nth-child(2) {
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+
+.butn span:nth-child(4) {
+  bottom: -100%;
+  left: 0%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #2196f3);
+}
+.butn:hover span:nth-child(4) {
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0.75s;
+}
+/* dropdownmenu */
+
+.dorp-down-menu {
+  display: none;
+}
+
+.perl:hover .dorp-down-menu {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+.dorp-down-menu ul {
+  display: block;
+  margin: 10px;
+}
+.dorp-down-menu ul li {
+  width: 80px;
+  padding: 10px;
+}

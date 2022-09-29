@@ -1,0 +1,29 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-image: linear-gradient(to right top, #2a0d1d, #2a0b22, #280928, #24092f, #1c0b36, #1e0a36, #210837, #230737, #2f022f, #370026, #3c001d, #3e0115);;;
+    font-family: 'Overpass Mono', monospace;
+    color: #f5f5f5;
+}
+
+a
+{
+    text-decoration: none;
+    color: #f5f5f5;
+}
+
+a:hover
+{
+    color: #69f0ae;
+}
+
+.hide
+{
+    display: none;
+}
